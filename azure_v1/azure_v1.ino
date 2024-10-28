@@ -1,5 +1,6 @@
 volatile bool object1Detected = false;  // Flag to track object detection for sensor 1
 volatile bool object2Detected = false;  // Flag to track object detection for sensor 2
+bool setupComplete = false;
 
 #define M1_PWM 2
 #define M2_PWM 3
@@ -20,11 +21,11 @@ void setup() {
   pinMode(13, INPUT);  // Set Pin 4 as input to read sensor 2 output
   
   // Attach interrupt to Pin 3 (sensor 1), triggered on change (RISING or FALLING edge)
-  attachInterrupt(digitalPinToInterrupt(12), sensorInterruptHandler1, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(8), sensorInterruptHandler1, CHANGE);
   // Attach interrupt to Pin 4 (sensor 2), triggered on change (RISING or FALLING edge)
   attachInterrupt(digitalPinToInterrupt(13), sensorInterruptHandler2, CHANGE);
 
-  Serial.println("VMA330 Sensors Interrupt Setup Complete")
+  Serial.println("VMA330 Sensors Interrupt Setup Complete");
   //Motor
   pinMode(M1_PWM,OUTPUT);
   pinMode(M2_PWM,OUTPUT);
@@ -36,10 +37,15 @@ void setup() {
   pinMode(M3_ENABLE, OUTPUT);//high or low
   pinMode(M4_ENABLE, OUTPUT);//high or low
 
+  setupComplete = true;
+
 }
 
 void loop() {
+  if (!setupComplete) return;
+  
   if (scan_snow()){
+    Serial.println("detected");
     //go grab the snow
     //push_snow();
   }
@@ -87,7 +93,7 @@ void go_back(int time){
 void turn_left(){
   //time to turn 90 = 2 seconds
   int pwm_value = 196;
-  int time = 885;
+  int time = 442;
   analogWrite(M1_PWM,pwm_value); //less than 128 -> forward, more than 128->backward, 128 == stop
   digitalWrite(M1_ENABLE, HIGH); //on or off
 
@@ -107,7 +113,7 @@ void turn_left(){
 void turn_right(){
   //time to turn 90 = 2 seconds
   int pwm_value = 60;
-  int time = 885;
+  int time = 442;
   analogWrite(M1_PWM,pwm_value); //less than 128 -> forward, more than 128->backward, 128 == stop
   digitalWrite(M1_ENABLE, HIGH); //on or off
 
@@ -124,7 +130,7 @@ void turn_right(){
   delay(500);
 }
 
-void turn_right_level(int level){ //level 1-8, 1= 45 degrees, 8 = 360 degrees
+void turn_right_level(int level){ //level 1-16, 1= 22.5 degrees, 16 = 360 degrees
   int i = 0;
   while(i<level){
     turn_right();
@@ -132,7 +138,7 @@ void turn_right_level(int level){ //level 1-8, 1= 45 degrees, 8 = 360 degrees
   }
 }
 
-void turn_left_level(int level){ //level 1-8, 1= 45 degrees, 8 = 360 degrees
+void turn_left_level(int level){ //level 1-16, 1= 22.5 degrees, 16 = 360 degrees
   int i = 0;
   while(i<level){
     turn_left();
@@ -150,16 +156,37 @@ void stop(){
 
 bool scan_snow(){
   int x = 0;
-  while(!object1Detected || !object2Detected){
-      if(X > 8){
+  while(!object1Detected && !object2Detected){
+      Serial.println(object1Detected);
+      Serial.println(object2Detected);
+      if(x > 8){
         break;
       }
-      turn_right_level(1)
+      turn_right_level(1);
+      x++;
   }
   if(object1Detected || object2Detected){
     return true;
   }
   return false;
+}
+
+// Interrupt Service Routine (ISR) for sensor 1 (Pin 3)
+void sensorInterruptHandler1() {
+  // Read the sensor output state for sensor 1
+  int sensor1State = digitalRead(8);
+  if (sensor1State == 0){//a value of 0 means that an object is detected
+    object1Detected = true;
+  }
+}
+
+// Interrupt Service Routine (ISR) for sensor 2 (Pin 4)
+void sensorInterruptHandler2() {
+  // Read the sensor output state for sensor 2
+  int sensor2State = digitalRead(13);
+  if (sensor2State == 0){ //a value of 0 means that an object is detected
+    object2Detected = true;
+  }
 }
 /*
 bool scan_obstacle(){
