@@ -18,20 +18,7 @@ void setup() {
 }
 
 void loop() {
-  // Check the flag and handle object detection logic for Sensor 1
-  if (object1Detected) {
-    Serial.println("Object 1 Detected!");
-  }
-
-  object1Detected = false;//should be reset after function for detecting snow finished
-
-  // Check the flag and handle object detection logic for Sensor 2
-  if (object2Detected) {
-    Serial.println("Object 2 Detected!");
-  }
-
-  object2Detected = false;//should be reset after function for detecting snow finished
-
+  IR_obstacle();
   delay(100);  // Small delay to prevent spamming the Serial monitor
 }
 
@@ -51,5 +38,21 @@ void sensorInterruptHandler2() {
   if (sensor2State == HIGH){
     object2Detected = true;
   }
+}
+
+bool IR_obstacle(){
+  // Check the flag and handle object detection logic for Sensor 1
+  if (object1Detected) {
+    Serial.println("Object 1 Detected!");
+  }
+
+  object1Detected = false;//should be reset after function for detecting snow finished
+
+  // Check the flag and handle object detection logic for Sensor 2
+  if (object2Detected) {
+    Serial.println("Object 2 Detected!");
+  }
+
+  object2Detected = false;//should be reset after function for detecting snow finished
 }
 
