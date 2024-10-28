@@ -1,15 +1,19 @@
 //Arkash sundralingam 101115738
 void battery mangemant{
+state="none"
 x=battery();
 If (x>=60){
+state='High_P'
 //keep all on
 }Else if(x>=20)&&(x<=60){
 Pinmode(pin(),low)
 Pinmode(pin(),low)
+state=save_p
 //Line + small block are on
 }else{
 Pinmode(12,low)
 Pinmode(13,low)
 //Line sensor is only on
+state=low_p
 }
 }
