@@ -1,6 +1,9 @@
-If (batteryPercentage>=60){
+//Arkash sundralingam 101115738
+void battery mangemant{
+x=battery();
+If (x>=60){
 //keep all on
-}Else if(batteryPercentage>=20)&&(batteryPercentage<=60){
+}Else if(x>=20)&&(x<=60){
 Pinmode(pin(),low)
 Pinmode(pin(),low)
 //Line + small block are on
@@ -8,4 +11,5 @@ Pinmode(pin(),low)
 Pinmode(12,low)
 Pinmode(13,low)
 //Line sensor is only on
+}
 }
