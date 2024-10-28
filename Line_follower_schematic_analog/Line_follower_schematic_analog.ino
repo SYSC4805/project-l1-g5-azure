@@ -1,4 +1,4 @@
-#define threshold 720
+#define threshold 850
 
 //float threshold1 = 720;
 //float threshold2 = 720;
@@ -34,72 +34,72 @@ bool detect_line(){
   float voltage5 = sensorValue5 * (3.3 / 4095.0);
   float voltage6 = sensorValue6 * (3.3 / 4095.0);
 
-  // Print sensor 1 data
-  Serial.print("Sensor 1 (A0) - Analog value: ");
-  Serial.print(sensorValue1);
-  Serial.print("\tVoltage: ");
-  Serial.print(voltage1);
-  Serial.println(" V");
+  // // Print sensor 1 data
+  // Serial.print("Sensor 1 (A0) - Analog value: ");
+  // Serial.print(sensorValue1);
+  // Serial.print("\tVoltage: ");
+  // Serial.print(voltage1);
+  // Serial.println(" V");
 
-  // Print sensor 2 data
-  Serial.print("Sensor 2 (A1) - Analog value: ");
-  Serial.print(sensorValue2);
-  Serial.print("\tVoltage: ");
-  Serial.print(voltage2);
-  Serial.println(" V"); 
+  // // Print sensor 2 data
+  // Serial.print("Sensor 2 (A1) - Analog value: ");
+  // Serial.print(sensorValue2);
+  // Serial.print("\tVoltage: ");
+  // Serial.print(voltage2);
+  // Serial.println(" V"); 
 
-  // Print sensor 3 data
-  Serial.print("Sensor 3 (A2) - Analog value: ");
-  Serial.print(sensorValue3);
-  Serial.print("\tVoltage: ");
-  Serial.print(voltage3);
-  Serial.println(" V");
+  // // Print sensor 3 data
+  // Serial.print("Sensor 3 (A2) - Analog value: ");
+  // Serial.print(sensorValue3);
+  // Serial.print("\tVoltage: ");
+  // Serial.print(voltage3);
+  // Serial.println(" V");
 
-  // Print sensor 4 data
-  Serial.print("Sensor 4 (A3) - Analog value: ");
-  Serial.print(sensorValue4);
-  Serial.print("\tVoltage: ");
-  Serial.print(voltage4);
-  Serial.println(" V");
+  // // Print sensor 4 data
+  // Serial.print("Sensor 4 (A3) - Analog value: ");
+  // Serial.print(sensorValue4);
+  // Serial.print("\tVoltage: ");
+  // Serial.print(voltage4);
+  // Serial.println(" V");
 
-  // Print sensor 2 data
-  Serial.print("Sensor 5 (A4) - Analog value: ");
-  Serial.print(sensorValue5);
-  Serial.print("\tVoltage: ");
-  Serial.print(voltage5);
-  Serial.println(" V"); 
+  // // Print sensor 2 data
+  // Serial.print("Sensor 5 (A4) - Analog value: ");
+  // Serial.print(sensorValue5);
+  // Serial.print("\tVoltage: ");
+  // Serial.print(voltage5);
+  // Serial.println(" V"); 
 
-  // Print sensor 3 data
-  Serial.print("Sensor 6 (A5) - Analog value: ");
-  Serial.print(sensorValue6);
-  Serial.print("\tVoltage: ");
-  Serial.print(voltage6);
-  Serial.println(" V");
-
-  Serial.println();
-
-  // if(sensorValue1 >= threshold){
-  //   Serial.println("black line detected at sensor 1");
-  // }
-  // if(sensorValue2 >= threshold){
-  //   Serial.println("black line detected at sensor 2");
-  // }
-  // if(sensorValue3 >= threshold){
-  //   Serial.println("black line detected at sensor 3");
-  // }
-
-
-  // if(sensorValue4 >= threshold){
-  //   Serial.println("black line detected at sensor 4");
-  // }
-  // if(sensorValue5 >= threshold){
-  //   Serial.println("black line detected at sensor 5");
-  // }
-  // if(sensorValue6 >= threshold){
-  //   Serial.println("black line detected at sensor 6   ");
-  // }
+  // // Print sensor 3 data
+  // Serial.print("Sensor 6 (A5) - Analog value: ");
+  // Serial.print(sensorValue6);
+  // Serial.print("\tVoltage: ");
+  // Serial.print(voltage6);
+  // Serial.println(" V");
 
   // Serial.println();
+
+  if(sensorValue1 >= threshold){
+    Serial.println("black line detected at sensor 1");
+  }
+  if(sensorValue2 >= threshold){
+    Serial.println("black line detected at sensor 2");
+  }
+  if(sensorValue3 >= threshold){
+    Serial.println("black line detected at sensor 3");
+  }
+
+
+  if(sensorValue4 >= threshold){
+    Serial.println("black line detected at sensor 4");
+  }
+  if(sensorValue5 >= threshold){
+    Serial.println("black line detected at sensor 5");
+  }
+  if(sensorValue6 >= threshold){
+    Serial.println("black line detected at sensor 6   ");
+  }
+
+  Serial.println();
 
 
   // //serial plotter printing
