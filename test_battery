@@ -1,0 +1,18 @@
+//Arkash sundralingam 101115738
+
+Test_battery(){
+test_state='none'
+//test case 1: 100%
+x=100
+test_state=battery_mangment()
+//test case 2: 75%
+x=75
+//test case 3: 50%
+
+//test case 4: 15%
+
+//test case 5: 5%
+
+test case 6: 0%
+
+}
