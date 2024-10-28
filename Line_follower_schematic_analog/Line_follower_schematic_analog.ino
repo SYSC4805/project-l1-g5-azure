@@ -13,6 +13,11 @@ void setup() {
 }
 
 void loop() {
+  detect_line();
+  delay(500);
+}
+
+bool detect_line(){
   // Reading analog values from pins A0, A1, and A2
   int sensorValue1 = analogRead(A0);  // Read sensor 1 value from A0
   int sensorValue2 = analogRead(A1);  // Read sensor 2 value from A1
@@ -73,43 +78,41 @@ void loop() {
 
   Serial.println();
 
-  if(sensorValue1 >= threshold){
-    Serial.println("black line detected at sensor 1");
-  }
-  if(sensorValue2 >= threshold){
-    Serial.println("black line detected at sensor 2");
-  }
-  if(sensorValue3 >= threshold){
-    Serial.println("black line detected at sensor 3");
-  }
+  // if(sensorValue1 >= threshold){
+  //   Serial.println("black line detected at sensor 1");
+  // }
+  // if(sensorValue2 >= threshold){
+  //   Serial.println("black line detected at sensor 2");
+  // }
+  // if(sensorValue3 >= threshold){
+  //   Serial.println("black line detected at sensor 3");
+  // }
 
 
-  if(sensorValue4 >= threshold){
-    Serial.println("black line detected at sensor 4");
-  }
-  if(sensorValue5 >= threshold){
-    Serial.println("black line detected at sensor 5");
-  }
-  if(sensorValue6 >= threshold){
-    Serial.println("black line detected at sensor 6   ");
-  }
+  // if(sensorValue4 >= threshold){
+  //   Serial.println("black line detected at sensor 4");
+  // }
+  // if(sensorValue5 >= threshold){
+  //   Serial.println("black line detected at sensor 5");
+  // }
+  // if(sensorValue6 >= threshold){
+  //   Serial.println("black line detected at sensor 6   ");
+  // }
 
-  Serial.println();
+  // Serial.println();
 
 
-  //serial plotter printing
-  Serial.print(voltage1);
-  Serial.print(" ");  // Space separator
-  Serial.print(voltage2);
-  Serial.print(" ");
-  Serial.print(voltage3);
-  Serial.print(" ");
-  Serial.print(voltage4);
-  Serial.print(" ");
-  Serial.print(voltage5);
-  Serial.print(" ");
-  Serial.println(voltage6);  // End the line here
+  // //serial plotter printing
+  // Serial.print(voltage1);
+  // Serial.print(" ");  // Space separator
+  // Serial.print(voltage2);
+  // Serial.print(" ");
+  // Serial.print(voltage3);
+  // Serial.print(" ");
+  // Serial.print(voltage4);
+  // Serial.print(" ");
+  // Serial.print(voltage5);
+  // Serial.print(" ");
+  // Serial.println(voltage6);  // End the line here
 
-  // Add a delay to avoid flooding the Serial Monitor
-  delay(500);
 }
