@@ -1,0 +1,11 @@
+If (batteryPercentage>=60){
+//keep all on
+}Else if(batteryPercentage>=20)&&(batteryPercentage<=60){
+Pinmode(pin(),low)
+Pinmode(pin(),low)
+//Line + small block are on
+}else{
+Pinmode(12,low)
+Pinmode(13,low)
+//Line sensor is only on
+}
