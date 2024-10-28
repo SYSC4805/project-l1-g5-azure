@@ -1,11 +1,8 @@
+//Arkash Sundralingam 101115738
 void loop() {
-  
   float variableBattery = readBatteryVoltage(); 
-
   int batteryPercentage = calculateBatteryPercentage(variableBattery);
-
-    delay(10000); }
-
+  delay(10000); }
 
 float readBatteryVoltage() {
   int rawValue = analogRead(batteryPin) ;
