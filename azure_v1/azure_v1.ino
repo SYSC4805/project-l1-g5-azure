@@ -1,3 +1,4 @@
+#include "azzure_v1.h"
 volatile bool object1Detected = false;  // Flag to track object detection for sensor 1
 volatile bool object2Detected = false;  // Flag to track object detection for sensor 2
 bool setupComplete = false;
