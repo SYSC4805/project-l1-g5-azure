@@ -1,4 +1,5 @@
 #include "MotorControl.h"
+#include "ultrasonic_sensors.h"
 
 #define THRESHOLD 970
 #define TEST 1
@@ -8,6 +9,7 @@ void setup() {
   Serial.begin(115200);
   while (!Serial);  // Wait for Serial to connect
   setupMotors();    //MAIN SETUP IN OVERALL PROJECT
+  setup_ultrasonic(); // setup ultra sonic sensor
 }
 
 void loop() { //MAIN LOOP IN OVERALL PROJECT
@@ -19,6 +21,21 @@ void loop() { //MAIN LOOP IN OVERALL PROJECT
     go_back(1000);       // Move backward for 2000ms
     turn_right_level(2); // Complete a 90-degree turn (2 levels of 45 degrees)
   }
+  if (CaptureFlagA) {
+        CaptureFlagA = false;
+        float distanceA = 340.0 * CaptureCountA / (42000000.0) / 2 * 100;
+        Serial.print("Sensor 1 Distance: ");
+        Serial.print(distanceA);
+        Serial.println(" cm");
+    }
+
+    if (CaptureFlagB) {
+        CaptureFlagB = false;
+        float distanceB = 340.0 * CaptureCountB / (42000000.0) / 2 * 100;
+        Serial.print("Sensor 2 Distance: ");
+        Serial.print(distanceB);
+        Serial.println(" cm");
+    }
 }
 
 bool detect_line(int test) {
