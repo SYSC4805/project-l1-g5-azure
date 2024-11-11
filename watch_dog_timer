@@ -19,7 +19,6 @@ void setup()
 void loop()
 {
  waittimer++;
- Serial.println(waittimer); // numer of loops
  if (waittimer > 10) 
  { 
      for(;;); //this is a deadlock
