@@ -1,16 +1,7 @@
 //Arkash sundralingam 101115738
-include <avr/wdt.h> 
-
-void setup() { 
-Serial.begin(9600);  
-wdt_enable(WDTO_2S); 
-} 
 
 void loop() { 
-Serial.println("System running..."); delay(1000); 
- wdt_reset(); 
  battery_mangement()
- delay(10000); 
  }
 
 void battery_mangement(){
