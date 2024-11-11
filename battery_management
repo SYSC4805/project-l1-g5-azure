@@ -3,12 +3,12 @@
 char state;
 int x;
 void loop() { 
- battery_mangement();
+//x=battery();
+ battery_mangement(x);
  }
 
 void battery_mangement(){
 state='z';
-//x=battery();
 if (x>=60){
 state='H';
 //keep all on
