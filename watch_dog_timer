@@ -1,27 +1,21 @@
 int waittimer = 0;
-double timeout = 3;  
+double timeout = 3;
 int timeout2 = 0;
 
 void WDT_Setup (){ 
- timeout2 =(int)( timeout * 227);
- timeout2 = 0x0fff2000 + timeout2; 
- WDT_Enable(WDT,timeout2); 
-}       
-
-
-
-void setup()
-{   
-  pinMode(ledOnBoard, OUTPUT); 
-  Serial.begin(9600);
+timeout2 =(int)( timeout * 227);
+timeout2 = 0x0fff2000 + timeout2; 
+WDT_Enable(WDT,timeout2); 
 }
+
 
 void loop()
 {
- waittimer++;
- if (waittimer > 10) 
- { 
-     for(;;); //this is a deadlock
- }
+waittimer++;
+Serial.println(waittimer); // numer of loops
+if (waittimer > 10) 
+{ //after 10 timer, we freeze the code into an infinite loop
+for(;;); //this is a deadlock
+}
 
 }
