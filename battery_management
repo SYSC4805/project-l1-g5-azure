@@ -1,33 +1,26 @@
 //Arkash sundralingam 101115738
-include <avr/wdt.h> 
 
-void setup() { 
-Serial.begin(9600);  
-wdt_enable(WDTO_2S); 
-} 
-
+char state;
+int x;
 void loop() { 
-Serial.println("System running..."); delay(1000); 
- wdt_reset(); 
- battery_mangement()
- delay(10000); 
+//x=battery();
+ battery_mangement(x);
  }
 
 void battery_mangement(){
-state="none"
-x=battery();
-If (x>=60){
-state='High_P'
+state='z';
+if (x>=60){
+state='H';
 //keep all on
-}Else if(x>=20)&&(x<=60){
-Pinmode(pin(),low)
-Pinmode(pin(),low)
-state=save_p
+}else if((x>=20)&&(x<=60)){
+pinmode(pin(),low);
+pinmode(pin(),low);
+state=S
 //Line + small block are on
 }else{
-Pinmode(12,low)
-Pinmode(13,low)
+pinmode(pin(),low);
+pinmode(pin(),low);
 //Line sensor is only on
-state=low_p
+state='L';
 }
 }
