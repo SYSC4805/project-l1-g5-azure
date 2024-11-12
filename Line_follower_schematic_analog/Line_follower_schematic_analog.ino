@@ -1,5 +1,5 @@
 #include "MotorControl.h"
-#include "ultrasonic_sensors.h"
+#include "IRSensor.h"
 
 #define THRESHOLD 970
 #define TEST 1
@@ -9,33 +9,29 @@ void setup() {
   Serial.begin(115200);
   while (!Serial);  // Wait for Serial to connect
   setupMotors();    //MAIN SETUP IN OVERALL PROJECT
-  setup_ultrasonic(); // setup ultra sonic sensor
+
+  pinMode(IR_SENSOR_1_PIN, INPUT); // Set pin 9 as input for Sensor 1
+  pinMode(IR_SENSOR_2_PIN, INPUT); // Set pin 10 as input for Sensor 2
 }
 
 void loop() { //MAIN LOOP IN OVERALL PROJECT
   // unit_test_motor();
   // delay(2000);
+
+
+  //DETECING LINE - POLLING THROUGH LINE FOLLOWER SENSOR
   int test = TEST;
   go_straight(100);
   if (detect_line(test)) {
     go_back(1000);       // Move backward for 2000ms
     turn_right_level(2); // Complete a 90-degree turn (2 levels of 45 degrees)
   }
-  if (CaptureFlagA) {
-        CaptureFlagA = false;
-        float distanceA = 340.0 * CaptureCountA / (42000000.0) / 2 * 100;
-        Serial.print("Sensor 1 Distance: ");
-        Serial.print(distanceA);
-        Serial.println(" cm");
-    }
 
-    if (CaptureFlagB) {
-        CaptureFlagB = false;
-        float distanceB = 340.0 * CaptureCountB / (42000000.0) / 2 * 100;
-        Serial.print("Sensor 2 Distance: ");
-        Serial.print(distanceB);
-        Serial.println(" cm");
-    }
+  //DETECTING OBSTACLES - POLLING THROUGH IR SENSOR
+  if(detect_IR_1() || detect_IR_2()){
+    go_back(700);
+    turn_right_level(1);
+  }
 }
 
 bool detect_line(int test) {

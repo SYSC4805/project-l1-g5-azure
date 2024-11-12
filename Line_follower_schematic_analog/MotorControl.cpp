@@ -15,16 +15,16 @@ void setupMotors() {
 
 // Moves the robot straight for a specified time (milliseconds)
 void go_straight(int time) {
-  analogWrite(M1_PWM, 198);  // Forward
+  analogWrite(M1_PWM, 178);  // Forward
   digitalWrite(M1_ENABLE, HIGH);
 
-  analogWrite(M2_PWM, 198);  // Forward
+  analogWrite(M2_PWM, 178);  // Forward
   digitalWrite(M2_ENABLE, HIGH);
 
-  analogWrite(M3_PWM, 50); // Forward
+  analogWrite(M3_PWM, 70); // Forward
   digitalWrite(M3_ENABLE, HIGH);
 
-  analogWrite(M4_PWM, 50); // Forward
+  analogWrite(M4_PWM, 70); // Forward
   digitalWrite(M4_ENABLE, HIGH);
 
   delay(time);
