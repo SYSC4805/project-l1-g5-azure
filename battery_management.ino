@@ -1,5 +1,5 @@
 //Arkash sundralingam 101115738
-
+#include "battery.h"
 char state;
 int x;
 void loop() { 
