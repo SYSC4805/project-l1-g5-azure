@@ -3,7 +3,7 @@
 char state;
 int x;
 void loop() { 
-//x=battery();
+x=battery();
  battery_mangement(x);
  }
 
