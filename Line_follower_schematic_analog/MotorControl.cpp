@@ -15,16 +15,17 @@ void setupMotors() {
 
 // Moves the robot straight for a specified time (milliseconds)
 void go_straight(int time) {
-  analogWrite(M1_PWM, 178);  // Forward
+  //Serial.println("Going straight");
+  analogWrite(M1_PWM, 208);  // Forward
   digitalWrite(M1_ENABLE, HIGH);
 
-  analogWrite(M2_PWM, 178);  // Forward
+  analogWrite(M2_PWM, 208);  // Forward
   digitalWrite(M2_ENABLE, HIGH);
 
-  analogWrite(M3_PWM, 70); // Forward
+  analogWrite(M3_PWM, 40); // Forward
   digitalWrite(M3_ENABLE, HIGH);
 
-  analogWrite(M4_PWM, 70); // Forward
+  analogWrite(M4_PWM, 40); // Forward
   digitalWrite(M4_ENABLE, HIGH);
 
   delay(time);
@@ -32,6 +33,7 @@ void go_straight(int time) {
 
 // Moves the robot backward for a specified time (milliseconds)
 void go_back(int time) {
+  //Serial.println("Going back");
   analogWrite(M1_PWM, 90); // Backward
   digitalWrite(M1_ENABLE, HIGH);
 
@@ -49,6 +51,7 @@ void go_back(int time) {
 
 // Turns the robot right by 90 degrees
 void turn_right() {
+  //Serial.println("Going right");
   int pwm_value = 196;
   int time = 650;  // Time to turn 90 degrees
   analogWrite(M1_PWM, pwm_value);
@@ -70,6 +73,7 @@ void turn_right() {
 
 // Turns the robot left by 90 degrees
 void turn_left() {
+  //Serial.println("Going left");
   int pwm_value = 60;
   int time = 650;  // Time to turn 90 degrees
   analogWrite(M1_PWM, pwm_value);
