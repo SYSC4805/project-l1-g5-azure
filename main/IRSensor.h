@@ -11,5 +11,6 @@
 // Function prototypes
 bool detect_IR_1();
 bool detect_IR_2();
+int analogToDistance(int analogValue);
 
 #endif // IRSENSOR_H

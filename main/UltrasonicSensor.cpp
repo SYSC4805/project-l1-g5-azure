@@ -14,11 +14,6 @@ long microsecondsToCentimeters(long microseconds) {
   return microseconds / 29 / 2;
 }
 
-// int getDistanceInCentimeters() {
-//     int duration = measurePulse();
-//     return microsecondsToCentimeters(duration);
-// }
-
 int measurePulse1() {
   long duration, inches, cm;
 
