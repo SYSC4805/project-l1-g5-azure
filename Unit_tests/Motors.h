@@ -15,13 +15,10 @@
 #define M4_ENABLE 52
 
 // Function prototypes
-void setup();
+void setupMotors();
 void goStraight(int time);
 void goBack(int time);
-void rightTurnHelper() 
-void leftTurnHelper() 
 void rightTurn(int level);
 void leftTurn(int level);
-void MotorsUnitTest();
 
 #endif
