@@ -1,4 +1,5 @@
 //Arkash sundralingam 101115738
+#include "battery_management.ino"
 int test_failed_count=0;
 char test_state;
 int x;

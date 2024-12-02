@@ -24,3 +24,12 @@ bool detect_line(int test) {
           sensorValue3 >= THRESHOLD || sensorValue4 >= THRESHOLD ||
           sensorValue5 >= THRESHOLD || sensorValue6 >= THRESHOLD);
 }
+
+void line_unit_test(){
+  detect_line(1);
+  Serial.println();
+  detect_line(1);
+  Serial.println();
+  detect_line(1);
+  Serial.println();
+}
