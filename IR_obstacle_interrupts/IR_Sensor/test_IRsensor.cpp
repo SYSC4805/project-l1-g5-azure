@@ -78,7 +78,7 @@ void testDetectIR2() {
   } else {
     Serial.println("Test Case 2 Failed.");
   }
-}
+
 
   if (detect_IR_1() == !simulatedState) {
     Serial.println("Test Passed for detect_IR_1");
