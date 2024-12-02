@@ -10,7 +10,7 @@ bool detect_line(int test) {
   int sensorValue5 = analogRead(A4);
   int sensorValue6 = analogRead(A5);
 
-  if (test == 1) {
+  if (test == 1) {//for debugging
     Serial.print("Sensor Values: ");
     Serial.print(sensorValue1); Serial.print(" ");
     Serial.print(sensorValue2); Serial.print(" ");
@@ -22,7 +22,7 @@ bool detect_line(int test) {
 
   return (sensorValue1 >= THRESHOLD || sensorValue2 >= THRESHOLD ||
           sensorValue3 >= THRESHOLD || sensorValue4 >= THRESHOLD ||
-          sensorValue5 >= THRESHOLD || sensorValue6 >= THRESHOLD);
+          sensorValue5 >= THRESHOLD || sensorValue6 >= THRESHOLD);//true if above set threshold
 }
 
 void line_unit_test(){
