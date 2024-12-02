@@ -78,25 +78,5 @@ void testDetectIR2() {
   } else {
     Serial.println("Test Case 2 Failed.");
   }
-
-
-  if (detect_IR_1() == !simulatedState) {
-    Serial.println("Test Passed for detect_IR_1");
-  } else {
-    Serial.println("Test Failed for detect_IR_1");
-  }
 }
 
-// Test function for detect_IR_2
-void testDetectIR2() {
-  Serial.println("Testing detect_IR_2...");
-
-  // Simulating sensor states
-  bool simulatedState = digitalRead(IR_SENSOR_2_PIN); // Reading the real pin state for testing
-
-  if (detect_IR_2() == !simulatedState) {
-    Serial.println("Test Passed for detect_IR_2");
-  } else {
-    Serial.println("Test Failed for detect_IR_2");
-  }
-}
