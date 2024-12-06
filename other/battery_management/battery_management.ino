@@ -15,7 +15,7 @@ state='H';
 }else if((x>=20)&&(x<=60)){
 pinmode(pin(),low);
 pinmode(pin(),low);
-state=S
+state='S'
 //Line + small block are on
 }else{
 pinmode(pin(),low);
